@@ -24,7 +24,7 @@ const changData = function(item, index) {
     isDisabled.value = false
 }
 
-const saveChangingCurr = () => {
+const saveChangingCurr = function(){
     store.setChangedCurrency(changingObject)
     isDisabled.value = true
     router.push({ path: '/changed' })

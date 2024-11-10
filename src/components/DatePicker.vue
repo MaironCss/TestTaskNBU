@@ -6,13 +6,6 @@ import moment from 'moment'
 
 const store = useCurrencyStore()
 const { getDate } = storeToRefs(store)
-const date = ref(store.getDate)
-
-const updateDate = (newDate) => {
-    date.value = newDate;
-    store.setDate(newDate)
-};
-
 const menu = ref(false)
 </script>
 
@@ -39,8 +32,8 @@ const menu = ref(false)
       </template>
         <v-date-picker
           color="primary"
-          :modelValue="date"
-          @update:modelValue="updateDate"
+          :modelValue="getDate"
+          @update:modelValue="store.setDate($event)"
         ></v-date-picker>
     </v-menu>
 </template>
