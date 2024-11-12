@@ -6,6 +6,7 @@ import moment from 'moment'
 
 const store = useCurrencyStore()
 const { getDate } = storeToRefs(store)
+const { getCurrentList } = storeToRefs(store)
 
 if (!store.getCurrentList.length) {
   store.getEventMethod()
@@ -15,7 +16,7 @@ if (!store.getCurrentList.length) {
 <template>
   <Suspense>
     <CurrencyTable 
-    :items="store.getCurrentList"
+    :items="getCurrentList"
     :date="moment(getDate).format('YYYY-MM-DD')"
     />
   </Suspense>
