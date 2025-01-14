@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { useCurrencyStore } from '@/stores/currensyList'
 import { storeToRefs } from 'pinia'
-import moment from 'moment'
+import dayjs from 'dayjs'
 
 const store = useCurrencyStore()
 const { getDate } = storeToRefs(store)
@@ -22,7 +22,7 @@ const menu = ref(false)
       <template v-slot:activator="{ props }">
         <v-text-field
           v-bind="props"
-          :modelValue="moment(getDate).format('YYYY-MM-DD')"
+          :modelValue="dayjs(getDate).format('YYYY-MM-DD')"
           variant="outlined"
           hide-details
           hide-spin-buttons

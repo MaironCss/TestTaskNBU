@@ -11,7 +11,7 @@ import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 import '@mdi/font/css/materialdesignicons.css'
-import moment from 'moment'
+import dayjs from 'dayjs'
 
 const app = createApp(App)
 
@@ -26,6 +26,6 @@ const vuetify = createVuetify({
 app.use(createPinia())
 app.use(router)
 app.use(vuetify)
-app.use(moment)
+app.use(dayjs)
 
 app.mount('#app')

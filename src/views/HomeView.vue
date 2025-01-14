@@ -2,7 +2,7 @@
 import { storeToRefs } from 'pinia'
 import CurrencyTable from '@/components/CurrencyTable.vue'
 import { useCurrencyStore } from '@/stores/currensyList'
-import moment from 'moment'
+import dayjs from 'dayjs'
 
 const store = useCurrencyStore()
 const { getDate } = storeToRefs(store)
@@ -14,10 +14,8 @@ if (!store.getCurrentList.length) {
 </script>
 
 <template>
-  <Suspense>
     <CurrencyTable 
     :items="getCurrentList"
-    :date="moment(getDate).format('YYYY-MM-DD')"
+    :date="dayjs(getDate).format('YYYY-MM-DD')"
     />
-  </Suspense>
 </template>

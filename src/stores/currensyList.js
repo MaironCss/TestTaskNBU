@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import EventService from '@/services/EventService.js'
-import moment from 'moment'
+import dayjs from 'dayjs'
 
 export const useCurrencyStore = defineStore('currencyList', {
     state: () => ({
@@ -11,12 +11,13 @@ export const useCurrencyStore = defineStore('currencyList', {
     }),
     actions: {
         getEventMethod(value = new Date) {
-            EventService.getEvent(moment(value).format('YYYYMMDD'))
-            .then((response) => {
-              this.saveCurrencyList(response.data)
+            EventService.getEvent(dayjs(value).format('YYYYMMDD'))
+            .then(res => res.json())
+            .then(res => {
+              this.saveCurrencyList(res)
             })
             .catch((error) => {
-              console.log(error)
+              throw new Error(error)
             })
         },
         saveCurrencyList(data) {
